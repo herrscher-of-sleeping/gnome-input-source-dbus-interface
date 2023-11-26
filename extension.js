@@ -42,7 +42,7 @@ class LayoutManager {
         const inputSources = getInputSourceManager().inputSources;
         // We do loop. Not a problem if you don't have a thousand input sources,
         // and tracking potential changes to the sources settings
-        // or using numeric values from input source order doesn't sounds like fun
+        // or using numeric values from input source order doesn't sound like fun
         for (var key in inputSources) {
             var inputSource = inputSources[key];
             if (inputSource.id == id) {
