@@ -1,6 +1,7 @@
 all: build
 
-.PHONY: build install
+.PHONY: build install package
+
 EXTENSIONS_PATH=~/.local/share/gnome-shell/extensions
 EXTENSION_NAME=input-source-dbus-interface@raiden_fumo
 
@@ -15,3 +16,6 @@ build:
 install: build
 	install -d $(EXTENSIONS_PATH)
 	rsync -a --delete build/ $(EXTENSIONS_PATH)/$(EXTENSION_NAME)/
+
+package: build
+	cd build && zip -r ../$(EXTENSION_NAME).zip *
