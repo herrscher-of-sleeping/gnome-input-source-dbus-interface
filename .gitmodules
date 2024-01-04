@@ -1,0 +1,3 @@
+[submodule "cirnos_perfect_preprocessor"]
+	path = preprocessor
+	url = https://github.com/herrscher-of-sleeping/cirnos_perfect_preprocessor
