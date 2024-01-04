@@ -15,10 +15,17 @@
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
+
+// #ifeq GNOME_VERSION 45
 import Gio from 'gi://Gio';
 
-import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
-import {getInputSourceManager} from 'resource:///org/gnome/shell/ui/status/keyboard.js';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+import { getInputSourceManager } from 'resource:///org/gnome/shell/ui/status/keyboard.js';
+
+// #else
+const { Gio } = imports.gi;
+const { getInputSourceManager } = imports.ui.status.keyboard;
+// #endif
 
 const DbusInterface = `<node>
     <interface name="raiden_fumo.InputSources">
@@ -73,7 +80,11 @@ class LayoutManager {
     }
 }
 
-export default class InputSourceInterface extends Extension {
+class InputSourceInterface
+    // #ifeq GNOME_VERSION 45
+    extends Extension
+// #endif
+{
     enable() {
         this._layoutManager = new LayoutManager();
         this._dbusObject = Gio.DBusExportedObject.wrapJSObject(DbusInterface, this._layoutManager);
@@ -86,3 +97,11 @@ export default class InputSourceInterface extends Extension {
         this._layoutManager = null;
     }
 }
+
+// #ifneq GNOME_VERSION 45
+function init(meta) {
+    return new InputSourceInterface();
+}
+// #else
+export default InputSourceInterface;
+// #endif

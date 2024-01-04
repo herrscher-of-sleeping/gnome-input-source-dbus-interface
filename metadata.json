@@ -1,9 +1,15 @@
 {
-  "name": "Input source D-Bus interface",
-  "description": "Add D-Bus interface for changing input sources via command",
-  "uuid": "input-source-dbus-interface@raiden_fumo",
-  "url": "https://github.com/herrscher-of-sleeping/gnome-input-source-dbus-interface",
-  "shell-version": [
-    "45"
-  ]
+    "name": "Input source D-Bus interface",
+    "description": "Add D-Bus interface for changing input sources via command",
+    "uuid": "input-source-dbus-interface@raiden_fumo",
+    "url": "https://github.com/herrscher-of-sleeping/gnome-input-source-dbus-interface",
+    "shell-version": [
+        #ifeq GNOME_VERSION 45
+        "45"
+        #else
+        "42",
+        "43",
+        "44"
+        #endif
+    ]
 }
