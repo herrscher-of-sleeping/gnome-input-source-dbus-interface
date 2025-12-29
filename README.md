@@ -35,8 +35,8 @@ $ gdbus call --session --dest org.gnome.Shell --object-path /raiden_fumo/InputSo
 ```
 
 # GNOME Shell version compatibility
-Should work on all versions from 3.28 to 45 (built with preprocessor for compatibility).
-It will most likely still work on earlier versions, but it wasn't tested on them.
+Should work on all versions from 3.28 and forward (built with preprocessor for compatibility).
+It will most likely still work on earlier versions, but wasn't tested on them.
 
 # Building & installation
 To support both ECMAScript modules (GNOME 45+) and old `imports` approach, custom preprocessor is used.
